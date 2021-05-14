@@ -1,9 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+// import NavBar from './components/NavBar';
+import Home from './components/Home';
 import './App.css';
 
 function App() {
   return (
+<<<<<<< HEAD
     <div className="App">
       <header className="App-header">
         <img src={ logo } className="App-logo" alt="logo" />
@@ -19,6 +22,14 @@ function App() {
         </a>
       </header>
     </div>
+=======
+    <BrowserRouter>
+      {/* <NavBar /> */}
+      <Switch>
+        <Route exact path="/" component={ Home } />
+      </Switch>
+    </BrowserRouter>
+>>>>>>> 97038ec15d1e06d20888490e4fed60dd5783a198
   );
 }
 
