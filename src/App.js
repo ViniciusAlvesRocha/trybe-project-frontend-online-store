@@ -1,17 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Categoria from './components/Categoria';
+import Home from './components/Home';
+import './App.css';
+import EmptyCart from './components/EmptyCart';
 
-class Home extends React.Component {
-  render() {
-    return (
-      <div>
-        <p data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
-        <Link data-testid="shopping-cart-button" to="/checkout">Carrinho</Link>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <BrowserRouter>
+      <Categoria />
+      <Switch>
+        <Route exact path="/" component={ Home } />
+        <Route path="/emptyCart" component={ EmptyCart } />
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
-export default Home;
+export default App;
