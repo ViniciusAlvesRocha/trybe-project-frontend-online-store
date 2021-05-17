@@ -16,9 +16,6 @@ export default class Home extends Component {
             </button>
           </Link>
         </div>
-        <p data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
       </div>
     );
   }
