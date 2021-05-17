@@ -15,17 +15,19 @@ class App extends React.Component() {
     };
   }
 
-  return (
-    <BrowserRouter>
-      <NavBar />
-      <Categoria />
-      <Switch>
-        <Route exact path="/" component={ Home } />
+  render() {
+    return (
+      <BrowserRouter>
+        <NavBar />
+        <Categoria />
+        <Switch>
+          <Route exact path="/" component={ Home } />
 
-        <Route exact path="/cart" component={ Cart } />
-      </Switch>
-    </BrowserRouter>
-  );
+          <Route exact path="/cart" component={ Cart } />
+        </Switch>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
