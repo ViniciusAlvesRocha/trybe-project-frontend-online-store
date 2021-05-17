@@ -6,7 +6,15 @@ import Cart from './components/Cart';
 import Categoria from './components/Categoria';
 import './App.css';
 
-function App() {
+class App extends React.Component() {
+  constructor() {
+    super();
+
+    this.state = {
+      movieList: [],
+    };
+  }
+
   return (
     <BrowserRouter>
       <NavBar />
