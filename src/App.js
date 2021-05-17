@@ -1,17 +1,20 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Categoria from './components/Categoria';
+import NavBar from './components/NavBar';
 import Home from './components/Home';
+import Cart from './components/Cart';
+import Categoria from './components/Categoria';
 import './App.css';
-import EmptyCart from './components/EmptyCart';
 
 function App() {
   return (
     <BrowserRouter>
+      <NavBar />
       <Categoria />
       <Switch>
         <Route exact path="/" component={ Home } />
-        <Route path="/emptyCart" component={ EmptyCart } />
+
+        <Route exact path="/cart" component={ Cart } />
       </Switch>
     </BrowserRouter>
   );
