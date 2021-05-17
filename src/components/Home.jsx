@@ -10,7 +10,7 @@ export default class Home extends Component {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         <div>
-          <Link to="/emptyCart">
+          <Link to="/cart">
             <button type="button">
               <img data-testid="shopping-cart-button" src={ Image } alt="imagem" />
             </button>
