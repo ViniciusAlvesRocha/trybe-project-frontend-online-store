@@ -7,7 +7,7 @@ import ProductDetails from './components/ProductDetails';
 import Categoria from './components/Categoria';
 import './App.css';
 
-class App extends React.Component() {
+class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
