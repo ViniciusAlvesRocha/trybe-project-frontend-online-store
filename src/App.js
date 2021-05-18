@@ -16,7 +16,7 @@ class App extends Component {
     };
   }
 
-  addToCart = (product) => {
+  setCart = (product) => {
     this.setState((state) => ({ cartList: [...state.cartList, product] }));
   }
 
