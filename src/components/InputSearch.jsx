@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class Input extends Component {
+class InputSearch extends Component {
   render() {
     const { handleInputSearch, handleSubmitFetch } = this.props;
     return (
@@ -28,3 +28,5 @@ InputSearch.propTypes = {
   handleInputSearch: PropTypes.func.isRequired,
   handleSubmitFetch: PropTypes.func.isRequired,
 };
+
+export default InputSearch;
