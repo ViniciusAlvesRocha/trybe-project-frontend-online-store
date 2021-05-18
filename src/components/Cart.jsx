@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class EmptyCart extends Component {
+export default class Cart extends Component {
   render() {
     return (
       <p data-testid="shopping-cart-empty-message">

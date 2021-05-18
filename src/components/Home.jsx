@@ -16,6 +16,7 @@ export default class Home extends Component {
             </button>
           </Link>
         </div>
+        <Link to={ `movies/${id}` }>Card do produto</Link>
       </div>
     );
   }
