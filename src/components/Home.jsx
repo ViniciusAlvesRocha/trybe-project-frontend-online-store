@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Image from '../img/icone.png';
+import InputSearch from '../components/InputSearch';
+import * as api from '../services/api';
+import ProductCard from '../components/ProductCard';
 
 export default class Home extends Component {
   render() {
