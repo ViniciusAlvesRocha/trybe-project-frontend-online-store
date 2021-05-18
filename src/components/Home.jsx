@@ -60,6 +60,7 @@ export default class Home extends Component {
               : 'Nenhum produto foi encontrado'}
           </p>
         </div>
+        {this.handleCard()}
         <div>
           <Link to="/cart">
             <button type="button">
@@ -71,7 +72,6 @@ export default class Home extends Component {
             </button>
           </Link>
         </div>
-        {this.handleCard()}
       </div>
     );
   }

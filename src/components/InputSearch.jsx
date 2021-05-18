@@ -13,8 +13,8 @@ class InputSearch extends Component {
           placeholder="O que você está buscando?"
         />
         <button
-          data-test="query-button"
-          type="submit"
+          data-testid="query-button"
+          type="button"
           onClick={ handleSubmitFetch }
         >
           Pesquisar
