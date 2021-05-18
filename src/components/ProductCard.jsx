@@ -14,6 +14,7 @@ export default class ProductCard extends Component {
           <img src={ thumbnail } alt="img" />
         </div>
         <p>{price}</p>
+        <button type="button"> Adicionar ao Carrinho </button>
       </div>
     );
   }
