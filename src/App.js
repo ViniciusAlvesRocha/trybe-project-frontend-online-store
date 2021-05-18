@@ -29,7 +29,6 @@ class App extends Component {
         <Categoria />
         <Switch>
           <Route exact path="/" component={ Home } />
-
           <Route exact path="/cart" render={ () => <Cart cartList={ cartList } /> } />
         </Switch>
       </BrowserRouter>
