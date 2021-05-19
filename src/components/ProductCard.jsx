@@ -10,13 +10,14 @@ export default class ProductCard extends Component {
 
     return (
       <div className="card" data-testid="product">
-        <Link data-testid="product-details-link" to={ `details/${id}` }>
-          <p data-testid="shopping-cart-product-name">{title}</p>
-          <div className="img">
-            <img src={ thumbnail } alt="img" />
-          </div>
-          <p>{price}</p>
+        <Link data-testid="product-detail-link" to={ `details/${id}` }>
+          Detalhes
         </Link>
+        <p data-testid="shopping-cart-product-name">{title}</p>
+        <div className="img">
+          <img src={ thumbnail } alt="img" />
+        </div>
+        <p>{price}</p>
         <button type="button"> Adicionar ao Carrinho </button>
       </div>
     );

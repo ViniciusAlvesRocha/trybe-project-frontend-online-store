@@ -9,7 +9,7 @@ export default class ProductDetails extends Component {
     super(props);
     this.state = {
       loading: true,
-      product: '',
+      product: [],
     };
   }
 
@@ -26,21 +26,21 @@ export default class ProductDetails extends Component {
   render() {
     const { loading, product } = this.state;
     const { title, thumbnail, price } = product;
-    console.log(product);
     return (
       <div>
         {
           loading
             ? <Loading />
-            : <div>
+            : <section>
               <p data-testid="product-detail-name">{`Title: ${title}`}</p>
               <img src={ thumbnail } alt="Product" />
               <p>{`Preço: ${price}`}</p>
-              <button type="button">
-                <Link to="/cart">Carrinho</Link>
-              </button>
-
-            </div>
+              <Link to="/cart">
+                <button type="button">
+                  Adicionar ao Carrinho
+                </button>
+              </Link>
+            </section>
         }
       </div>
     );
