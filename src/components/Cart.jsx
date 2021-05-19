@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 export default class EmptyCart extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cartList: [],
+    };
+  }
+
   render() {
     // eslint-disable-next-line react/prop-types
     const { cartList } = this.state;

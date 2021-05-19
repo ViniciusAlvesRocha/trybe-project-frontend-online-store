@@ -31,6 +31,8 @@ class App extends React.Component {
     const { target: { id } } = event;
 
     const products = await api.getProductsFromCategoryAndQuery(id);
+    console.log('Produtos por categoria');
+    console.log(products);
     this.setState({
       products: products.results,
     });
@@ -54,7 +56,7 @@ class App extends React.Component {
       value,
     });
   };
-  // funçõesdo requisito 5 FINAL
+  // funçõesdo requisito 5 FINAL.
 
   getProductsByCategory = async (id) => {
     const response = await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${id}`);
