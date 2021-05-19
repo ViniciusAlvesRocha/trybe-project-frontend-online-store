@@ -19,13 +19,13 @@ class App extends React.Component {
     };
   }
 
-    setCart = async ({ categoryId, title, id }) => {
-      const { results } = await api.getProductsFromCategoryAndQuery(categoryId, title);
-      console.log(results);
-      const product = results.find((result) => result.id === id);
-      this.setState((oldState) => ({ cartList: [...oldState.cartList, product] }));
-      console.log(this.state);
-    }
+  setCart = async ({ categoryId, title, id }) => {
+    const { results } = await api.getProductsFromCategoryAndQuery(categoryId, title);
+    console.log(results);
+    const product = results.find((result) => result.id === id);
+    this.setState((oldState) => ({ cartList: [...oldState.cartList, product] }));
+    console.log(this.state);
+  }
 
   handleProductsByCategory = async (event) => {
     const { target: { id } } = event;
@@ -54,7 +54,7 @@ class App extends React.Component {
       value,
     });
   };
-  // funçõesdo requisito 5 FINAL
+  // funçõesdo requisito 5 FINAL.
 
   getProductsByCategory = async (id) => {
     const response = await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${id}`);
@@ -64,7 +64,6 @@ class App extends React.Component {
 
   render() {
     const { products, value, foundProducts, cartList } = this.state;
-    console.log(this.state);
 
     return (
       <BrowserRouter>
