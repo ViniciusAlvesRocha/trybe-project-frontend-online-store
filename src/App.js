@@ -5,6 +5,7 @@ import * as api from './services/api';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import Cart from './components/Cart';
+import ProductDetails from './components/ProductDetails';
 import Categoria from './components/Categoria';
 import './App.css';
 
@@ -83,6 +84,10 @@ class App extends React.Component {
             />) }
           />
           <Route exact path="/cart" render={ () => <Cart cartList={ cartList } /> } />
+          <Route
+            path="/details/:id"
+            render={ (props) => <ProductDetails { ...props } /> }
+          />
         </Switch>
       </BrowserRouter>
     );

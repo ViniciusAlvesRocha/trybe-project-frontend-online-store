@@ -45,6 +45,7 @@ export default class Home extends Component {
                 data-testid="shopping-cart-button"
                 src={ Image }
                 alt="imagem"
+                width="20px"
               />
             </button>
           </Link>
