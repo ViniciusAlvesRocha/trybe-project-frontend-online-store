@@ -36,16 +36,18 @@ export default class ProductDetails extends Component {
         {
           loading
             ? <Loading />
-            : <section>
-              <p data-testid="product-detail-name">{`Title: ${title}`}</p>
-              <img src={ thumbnail } alt="Product" />
-              <p>{`Preço: ${price}`}</p>
-              <Link to="/cart">
-                <button type="button">
-                  Adicionar ao Carrinho
-                </button>
-              </Link>
-            </section>
+            : (
+              <section>
+                <p data-testid="product-detail-name">{`Title: ${title}`}</p>
+                <img src={ thumbnail } alt="Product" />
+                <p>{`Preço: ${price}`}</p>
+                <Link to="/cart">
+                  <button type="button">
+                    Adicionar ao Carrinho
+                  </button>
+                </Link>
+              </section>
+            )
         }
       </div>
     );
