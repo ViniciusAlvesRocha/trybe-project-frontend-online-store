@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getCategories } from '../services/api';
 
 export default class Categoria extends Component {
@@ -21,20 +22,29 @@ getApi = async () => {
 
 render() {
   const { categories } = this.state;
-  console.log(categories);
+  const { handle } = this.props;
   return (
     <header>
       <nav>
         { categories.map(({ id, name }) => (
-          <NavLink
-            data-testid="category"
-            to="/"
-            key={ id }
-          >
-            {name}
-          </NavLink>))}
+          <>
+            <NavLink
+              data-testid="category"
+              to="/"
+              key={ id }
+              id={ id }
+              onClick={ handle }
+            >
+              {name}
+            </NavLink>
+            <br />
+          </>))}
       </nav>
     </header>
   );
 }
 }
+
+Categoria.propTypes = {
+  handle: PropTypes.func.isRequired,
+};
