@@ -21,7 +21,6 @@ getApi = async () => {
 
 render() {
   const { categories } = this.state;
-  console.log(categories);
   return (
     <header>
       <nav>

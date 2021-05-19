@@ -36,10 +36,12 @@ export default class Home extends Component {
 
   handleCard() {
     const { products } = this.state;
+    console.log(products);
+    const { setCart, onClick } = this.props;
     return (
       <div className="card-container">
         {products.map((item) => (
-          <ProductCard key={ item.id } item={ item } data-testid="product" />
+          <ProductCard key={ item.id } item={ item } data-testid="product" onClick={ onClick } />
         ))}
       </div>
     );

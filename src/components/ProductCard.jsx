@@ -5,8 +5,9 @@ export default class ProductCard extends Component {
   render() {
     const {
       item: { title, thumbnail, price },
+      onClick,
     } = this.props;
-    const { setCart } = this.props;
+
     return (
       <div className="card" data-testid="product">
         <p data-testid="shopping-cart-product-name">{ title }</p>
@@ -16,7 +17,7 @@ export default class ProductCard extends Component {
         <p>{price}</p>
         <button
           type="button"
-          onClick={ () => setCart({ id, title, price, thumbnail }) }
+          onClick={ () => onClick({ title, thumbnail, price }) }
           data-testid="product-add-to-cart"
         >
           Adicionar ao Carrinho
@@ -27,7 +28,7 @@ export default class ProductCard extends Component {
 }
 
 ProductCard.propTypes = {
-  setCart: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   item: PropTypes.shape({
     title: PropTypes.string.isRequired,
     thumbnail: PropTypes.string.isRequired,
