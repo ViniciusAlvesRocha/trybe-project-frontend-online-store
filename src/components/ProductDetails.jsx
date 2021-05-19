@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Loading from './Loading';
-import * as api from '../services/api';
+// import * as api from '../services/api';
 
 export default class ProductDetails extends Component {
   constructor(props) {
@@ -19,8 +19,13 @@ export default class ProductDetails extends Component {
 
   cacthProduct = async () => {
     const { match: { params: { id } } } = this.props;
-    const product = await api.getProductsFromCategoryAndQuery(id);
+    const product = await this.apiProduct(id);
     this.setState({ loading: false, product });
+  }
+
+  apiProduct = async (id) => {
+    const product = await fetch(`https://api.mercadolibre.com/items/${id}`);
+    return product.json();
   }
 
   render() {

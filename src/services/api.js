@@ -6,14 +6,12 @@ export async function getCategories() {
 
 export async function getProductsFromCategoryAndQuery(...rest) {
   let response;
+  const [categoryId, query] = rest;
   if (rest.length === 2) {
-    const [categoryId, query] = rest;
     // Implemente aqui! Quando o fizer, descomente os parâmetros que essa função recebe /* * /
     response = await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}_ID&q=${query}`);
   } else {
-    const [query] = rest;
-    response = await fetch(`https://api.mercadolibre.com/items/${query}`);
+    response = await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}`);
   }
-  const result = await response.json();
-  return result;
+  return response.json();
 }
