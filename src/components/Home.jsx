@@ -1,41 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Image from '../img/icone.png';
 import InputSearch from './InputSearch';
-import * as api from '../services/api';
 import ProductCard from './ProductCard';
 
 export default class Home extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleInputSearch = this.handleInputSearch.bind(this);
-    this.handleSubmitFetch = this.handleSubmitFetch.bind(this);
-
-    this.state = {
-      products: [],
-      foundProducts: true,
-      value: '',
-    };
-  }
-
-  handleSubmitFetch() {
-    const { value } = this.state;
-    return api
-      .getProductsFromCategoryAndQuery(null, value)
-      .then((data) => this.setState({ products: data.results }))
-      .catch(() => {
-        this.setState({ foundProducts: false });
-      });
-  }
-
-  handleInputSearch({ target }) {
-    const { value } = target;
-    this.setState({ value });
-  }
-
   handleCard() {
-    const { products } = this.state;
+    const { products } = this.props;
     return (
       <div className="card-container">
         {products.map((item) => (
@@ -46,13 +18,13 @@ export default class Home extends Component {
   }
 
   render() {
-    const { foundProducts } = this.state;
+    const { foundProducts, handleInputSearch, handleSubmitFetch } = this.props;
     return (
       <div>
         <div className="">
           <InputSearch
-            handleInputSearch={ this.handleInputSearch }
-            handleSubmitFetch={ this.handleSubmitFetch }
+            handleInputSearch={ handleInputSearch }
+            handleSubmitFetch={ handleSubmitFetch }
           />
           <p data-testid="home-initial-message">
             {foundProducts
@@ -76,3 +48,10 @@ export default class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  products: PropTypes.arrayOf().isRequired,
+  foundProducts: PropTypes.func.isRequired,
+  handleInputSearch: PropTypes.func.isRequired,
+  handleSubmitFetch: PropTypes.func.isRequired,
+};
