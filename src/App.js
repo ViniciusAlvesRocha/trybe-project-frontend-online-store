@@ -19,17 +19,17 @@ class App extends React.Component {
     };
   }
 
-    setCart = async ({ categoryId, title }) => {
+    setCart = async ({ categoryId, title, id }) => {
       const { results } = await api.getProductsFromCategoryAndQuery(categoryId, title);
       console.log(results);
-      const product = results.find((result) => result.title === title);
-      this.setState({ cartList: product });
-      console.log(`entrei aqui, produto emcontrado: ${product}`);
+      const product = results.find((result) => result.id === id);
+      this.setState((oldState) => ({ cartList: [...oldState.cartList, product] }));
+      console.log(this.state);
     }
 
   handleProductsByCategory = async (event) => {
     const { target: { id } } = event;
-    console.log(id);
+
     const products = await api.getProductsFromCategoryAndQuery(id);
     this.setState({
       products: products.results,
@@ -39,7 +39,7 @@ class App extends React.Component {
   // funções do requisito 5 INICIO
   handleSubmitFetch = () => {
     const { value } = this.state;
-    console.log(value);
+
     return api
       .getProductsFromCategoryAndQuery(null, value)
       .then((data) => this.setState({ products: data.results }))
@@ -64,7 +64,8 @@ class App extends React.Component {
 
   render() {
     const { products, value, foundProducts, cartList } = this.state;
-    // console.log(this.setCart());
+    console.log(this.state);
+
     return (
       <BrowserRouter>
         <NavBar />
