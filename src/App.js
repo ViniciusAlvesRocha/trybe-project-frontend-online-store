@@ -23,7 +23,7 @@ class App extends React.Component {
       const { results } = await api.getProductsFromCategoryAndQuery(categoryId, title);
       console.log(results);
       const product = results.find((result) => result.title === title);
-      this.setState((oldState) => ({ cartList: [...oldState.cartList, product] }));
+      this.setState({ cartList: product });
       console.log(`entrei aqui, produto emcontrado: ${product}`);
     }
 
