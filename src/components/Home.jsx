@@ -7,11 +7,16 @@ import ProductCard from './ProductCard';
 
 export default class Home extends Component {
   handleCard() {
-    const { products } = this.props;
+    const { products, onClick } = this.props;
     return (
       <div className="card-container">
-        {products.map((item) => (
-          <ProductCard key={ item.id } item={ item } data-testid="product" />
+        {products?.map((item) => (
+          <ProductCard
+            key={ item.id }
+            item={ item }
+            data-testid="product"
+            onClick={ onClick }
+          />
         ))}
       </div>
     );
@@ -50,6 +55,7 @@ export default class Home extends Component {
 }
 
 Home.propTypes = {
+  onClick: PropTypes.func.isRequired,
   products: PropTypes.arrayOf().isRequired,
   foundProducts: PropTypes.func.isRequired,
   handleInputSearch: PropTypes.func.isRequired,
