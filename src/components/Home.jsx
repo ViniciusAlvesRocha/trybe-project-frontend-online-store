@@ -11,7 +11,12 @@ export default class Home extends Component {
     return (
       <div className="card-container">
         {products.map((item) => (
-          <ProductCard key={ item.id } item={ item } data-testid="product" onClick={ onClick } />
+          <ProductCard
+            key={ item.id }
+            item={ item }
+            data-testid="product"
+            onClick={ onClick }
+          />
         ))}
       </div>
     );
