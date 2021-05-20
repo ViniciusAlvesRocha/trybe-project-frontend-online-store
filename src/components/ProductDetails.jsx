@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Loading from './Loading';
+import Form from './Form';
 // import * as api from '../services/api';
 
 export default class ProductDetails extends Component {
@@ -49,6 +50,7 @@ export default class ProductDetails extends Component {
               </section>
             )
         }
+        <Form />
       </div>
     );
   }
