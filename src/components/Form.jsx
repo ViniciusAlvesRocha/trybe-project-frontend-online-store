@@ -1,45 +1,66 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Form extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: '' };
+    this.state = {
+    };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.submitComent = this.submitComent.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
-
-  handleSubmit(event) {
-    alert('Um nome foi enviado: ' + this.state.value);
-    event.preventDefault();
+  submitComent() {
+    const email = document.getElementById('userEmail').value;
+    const msg = document.getElementById('mensageUser').value;
+    const listReviews = document.getElementById('reviews');
+    const block = `<div className="coment">Usuario: ${email} <br> Mensagem: ${msg}</div>`;
+    listReviews.innerHTML = block;
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="email">
-          Email:
-          <input
-            id="email"
-            type="email"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label htmlFor="mensagem">
-          Mensagem (opcional):
-          <textarea
-            id="mensagem"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-        </label>
-        <button type="submit" value="Avaliar">Avaliar</button>
-      </form>
+      <div>
+        <h3>Deixe sua opinião</h3>
+        <form>
+          <label htmlFor="userEmail">
+            Email:
+            <input
+              id="userEmail"
+              type="email"
+              placeholder="E-mail: exemplo@exemplo.com"
+            />
+          </label>
+          <label htmlFor="message">
+            Mensagem (opcional):
+            <textarea
+              cols="33"
+              rowls="5"
+              placeholder="Mensagem opcional"
+              data-testid="product-detail-evaluation"
+              id="mensageUser"
+            />
+          </label>
+        </form>
+        <button
+          type="submit"
+          onClick={ this.submitComent }
+          className="btn-comment"
+        >
+          Avaliar
+        </button>
+        <div className="reviews">
+          <ul id="reviews" />
+        </div>
+      </div>
     );
   }
 }
+
+Form.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+};

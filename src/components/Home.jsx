@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Image from '../img/icone.png';
 import InputSearch from './InputSearch';
 import ProductCard from './ProductCard';
-import Form from './Form';
 
 export default class Home extends Component {
   handleCard() {
@@ -51,7 +50,6 @@ export default class Home extends Component {
             </button>
           </Link>
         </div>
-        <Form />
       </div>
     );
   }
