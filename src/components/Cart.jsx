@@ -71,6 +71,7 @@ export default class Cart extends Component {
 }
 
 Cart.propTypes = {
+  onClick: PropTypes.func.isRequired,
   cartList: PropTypes.objectOf({
     id: PropTypes.string,
     title: PropTypes.string,
