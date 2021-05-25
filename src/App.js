@@ -43,6 +43,42 @@ class App extends React.Component {
     console.log(this.state);
   }
 
+  handleQuantity = (type, id) => {
+    const { cartList } = this.state;
+    let newCartList = [];
+
+    if (type === 'decrease') {
+      const findProduct = cartList.find((product) => product.product.id === id);
+      if (findProduct) {
+        console.log('dentro do if -');
+        newCartList = cartList.map((product) => {
+          if (product.product.id === findProduct.product.id) {
+            console.log('dentro do if quantity');
+            product.quantity -= 1;
+          }
+          console.log('product', product);
+          return product;
+        });
+      }
+    }
+
+    if (type === 'increase') {
+      const findProduct = cartList.find((product) => product.product.id === id);
+      if (findProduct) {
+        console.log('dentro do if -');
+        newCartList = cartList.map((product) => {
+          if (product.product.id === findProduct.product.id) {
+            console.log('dentro do if quantity');
+            product.quantity += 1;
+          }
+          console.log('product', product);
+          return product;
+        });
+      }
+    }
+    this.setState(() => ({ addCart: newCartList }));
+  }
+
   handleProductsByCategory = async (event) => {
     const { target: { id } } = event;
 
