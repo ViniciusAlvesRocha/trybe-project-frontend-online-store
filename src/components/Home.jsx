@@ -26,18 +26,6 @@ export default class Home extends Component {
     const { foundProducts, handleInputSearch, handleSubmitFetch } = this.props;
     return (
       <div>
-        <div className="">
-          <InputSearch
-            handleInputSearch={ handleInputSearch }
-            handleSubmitFetch={ handleSubmitFetch }
-          />
-          <p data-testid="home-initial-message">
-            {foundProducts
-              ? 'Digite algum termo de pesquisa ou escolha uma categoria.'
-              : 'Nenhum produto foi encontrado'}
-          </p>
-        </div>
-        {this.handleCard()}
         <div>
           <Link to="/cart">
             <button type="button">
@@ -50,6 +38,18 @@ export default class Home extends Component {
             </button>
           </Link>
         </div>
+        <div className="">
+          <InputSearch
+            handleInputSearch={ handleInputSearch }
+            handleSubmitFetch={ handleSubmitFetch }
+          />
+          <p data-testid="home-initial-message">
+            {foundProducts
+              ? 'Digite algum termo de pesquisa ou escolha uma categoria.'
+              : 'Nenhum produto foi encontrado'}
+          </p>
+        </div>
+        {this.handleCard()}
       </div>
     );
   }
