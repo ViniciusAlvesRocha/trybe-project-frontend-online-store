@@ -21,10 +21,25 @@ class App extends React.Component {
   }
 
   setCart = async ({ categoryId, title, id }) => {
+    const { cartList } = this.state;
     const { results } = await api.getProductsFromCategoryAndQuery(categoryId, title);
     console.log(results);
     const product = results.find((result) => result.id === id);
-    this.setState((oldState) => ({ cartList: [...oldState.cartList, product] }));
+    const exist = cartList.find((item) => item.product.id === id);
+    this.setState((oldState) => {
+      let newCartList = [];
+      if (exist) {
+        newCartList = oldState.cartList.map((item) => {
+          if (item.product.id === product.id) {
+            product.quantity += 1;
+          }
+          return product;
+        });
+      } else {
+        newCartList = [...oldState.cartList, { product, quantity: 1 }];
+      }
+      return { cartList: newCartList };
+    });
     console.log(this.state);
   }
 
@@ -83,7 +98,13 @@ class App extends React.Component {
               onClick={ this.setCart }
             />) }
           />
-          <Route exact path="/cart" render={ () => <Cart cartList={ cartList } /> } />
+          <Route
+            exact
+            path="/cart"
+            render={
+              () => <Cart cartList={ cartList } onClick={ this.handleQuantity } />
+            }
+          />
           <Route
             path="/details/:id"
             render={ (props) => <ProductDetails { ...props } /> }

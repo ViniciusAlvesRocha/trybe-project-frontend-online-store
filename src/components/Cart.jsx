@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import CartCard from './CartCard';
 
 export default class Cart extends Component {
+
   render() {
     const { cartList } = this.props;
     if (cartList.length === 0) {
@@ -10,19 +12,18 @@ export default class Cart extends Component {
     return (
       <div>
         <div>
-          {cartList.map(({ id, title, thumbnail, price }) => (
-            <div key={ id }>
-              <h3 data-testid="shopping-cart-product-name">{ title }</h3>
-              <img src={ thumbnail } alt={ title } />
-              <p>{ price }</p>
-            </div>
+          {cartList.map(({ id, title, thumbnail, price, quantity }) => (
+            <CartCard
+              id={ id }
+              key={ id }
+              title={ title }
+              thumbnail={ thumbnail }
+              price={ price }
+              quantity={ quantity }
+              increaseButton={ this.increaseButton }
+              decreaseButton={ this.decreaseButton }
+            />
           ))}
-          <p
-            data-testid="shopping-cart-product-quantity"
-          >
-            Quantidade de produtos:
-            {cartList.length}
-          </p>
         </div>
       </div>
     );
